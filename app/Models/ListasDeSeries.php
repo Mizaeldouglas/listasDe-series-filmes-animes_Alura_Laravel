@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ListasDeSeries extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome'];
+    protected $fillable = [
+        'nome',
+        'categoria_id',
+        'imagem'
+    ];
 }

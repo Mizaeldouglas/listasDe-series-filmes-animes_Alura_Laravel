@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('listas_de_series', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('categoria_id');
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }
