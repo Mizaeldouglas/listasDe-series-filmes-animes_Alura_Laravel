@@ -1,4 +1,4 @@
-## Lista de Filmes, Series, Animes Feito em lavael com BosstStrap
+## Lista de Filmes, Series, Animes Feito em laravel com BootStrap
 
 
 
