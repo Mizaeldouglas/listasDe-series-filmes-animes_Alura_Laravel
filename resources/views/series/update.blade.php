@@ -1,6 +1,6 @@
-<x-layout title="Atualizar Lista de Séries / Filmes / Animes">
-    <a href="/series" class="btn btn-dark mb-2 m-4">Voltar
-        Início</a>
+<x-layout>
+    <x-slot name="title">Cine<span class="text-bg-danger fw-bold p-1 rounded">Flix</span></x-slot>
+    <a href="/series" class="btn btn-dark mb-2 m-4">Voltar <span class="text-bg-danger fw-bold p-1 rounded">Inicio</span></a>
     <form action="{{route('series.update', ['id' => $serie->id])}}" method="POST" enctype="multipart/form-data">
         @method('put')
         @csrf

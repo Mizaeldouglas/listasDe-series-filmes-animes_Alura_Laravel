@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function index(Request $request)
+    public function index (Request $request)
     {
         $series = ListasDeSeries::query()->orderByDesc('updated_at')->get();
+        $mensagem = $request->session()->get('sucesso');
+        $mensagemDelete = $request->session()->get('delete');
+        $mensagemUpdate = $request->session()->get('update');
 
-        return view('series.index', compact('series'));
+        return view('series.index', compact('series','mensagemUpdate'), compact('mensagem', 'mensagemDelete'));
     }
 
-    public function create()
+    public function create ()
     {
         return view('series.create');
     }
@@ -37,27 +40,34 @@ class SeriesController extends Controller
 
         ListasDeSeries::create($data);
 
-        return redirect('/series');
-    }
-    public function destroy(Request $request)
-    {
-        ListasDeSeries::destroy($request->id);
-        return redirect('/series');
+        return redirect('/series')->with('sucesso', "{$data['categoria_id']}: {$data['nome']} criada com sucesso!");
     }
 
-    public function update(Request $request)
+
+    public function destroy (ListasDeSeries $series, Request $request)
+    {
+
+        $series->delete();
+
+        return redirect('/series')->with('delete', "{$series->nome} removido com sucesso!");
+    }
+
+    public function update (Request $request)
     {
         $serie = ListasDeSeries::find($request->id);
         $serie->nome = $request->nome;
         $serie->categoria_id = $request->categoria_id;
         $serie->imagem = $request->imagem;
         $serie->save();
-        return redirect('/series');
+
+        return redirect('/series')->with('update', "{$serie->nome} atualizado com sucesso!");
     }
-    public function edit($id)
+
+    public function edit ($id)
     {
         $serie = ListasDeSeries::find($id);
         return view('series.update', compact('serie'));
     }
+
 
 }
