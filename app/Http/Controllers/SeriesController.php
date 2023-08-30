@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\ListasDeSeries;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function post (Request $request)
+    public function post (SeriesFormRequest  $request)
     {
+
         $data = $request->only(['nome', 'categoria_id', 'imagem']);
 
         // Mapear os valores de categoria para nomes
@@ -52,8 +54,10 @@ class SeriesController extends Controller
         return redirect('/series')->with('delete', "{$series->nome} removido com sucesso!");
     }
 
-    public function update (Request $request)
+    public function update (SeriesFormRequest $request)
     {
+
+
         $serie = ListasDeSeries::find($request->id);
         $serie->nome = $request->nome;
         $serie->categoria_id = $request->categoria_id;

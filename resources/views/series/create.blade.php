@@ -1,6 +1,6 @@
-<x-layout>
-    <x-slot name="title">Cine<span class="text-bg-danger fw-bold p-1 rounded">Flix</span></x-slot>
-    <a href="/series" class="btn btn-dark mb-2 m-4">Voltar <span class="text-bg-danger fw-bold p-1 rounded">Inicio</span></a>
+<x-layout title="CineFlix">
+    <x-slot name="titleMain">Cine<span class="text-bg-danger fw-bold p-1 rounded">Flix</span></x-slot>
+    <a href="{{ route('series.index') }}" class="btn btn-dark mb-2 m-4">Voltar <span class="text-bg-danger fw-bold p-1 rounded">Inicio</span></a>
 
     <form action="{{route('series.post')}}" method="POST" class="">
         @csrf

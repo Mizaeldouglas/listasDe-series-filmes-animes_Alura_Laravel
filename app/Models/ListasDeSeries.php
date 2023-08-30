@@ -13,4 +13,9 @@ class ListasDeSeries extends Model
         'categoria_id',
         'imagem'
     ];
+
+//    public function temporadas()
+//    {
+//        return $this->hasMany(Temporada::class, 'serie_id');
+//    }
 }
