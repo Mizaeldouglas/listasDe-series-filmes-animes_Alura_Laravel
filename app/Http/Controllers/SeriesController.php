@@ -42,7 +42,7 @@ class SeriesController extends Controller
 
         ListasDeSeries::create($data);
 
-        return redirect('/series')->with('sucesso', "{$data['categoria_id']}: {$data['nome']} criada com sucesso!");
+        return redirect(route('series.index'))->with('sucesso', "{$data['categoria_id']}: {$data['nome']} criada com sucesso!");
     }
 
 
@@ -51,7 +51,7 @@ class SeriesController extends Controller
 
         $series->delete();
 
-        return redirect('/series')->with('delete', "{$series->nome} removido com sucesso!");
+        return redirect(route('series.index'))->with('delete', "{$series->nome} removido com sucesso!");
     }
 
     public function update (SeriesFormRequest $request)
@@ -64,7 +64,7 @@ class SeriesController extends Controller
         $serie->imagem = $request->imagem;
         $serie->save();
 
-        return redirect('/series')->with('update', "{$serie->nome} atualizado com sucesso!");
+        return redirect(route('series.index'))->with('update', "{$serie->nome} atualizado com sucesso!");
     }
 
     public function edit ($id)

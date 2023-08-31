@@ -1,7 +1,7 @@
 <x-layout title="CineFlix">
     <style>
         .card-img {
-            height: 200px; /* Defina a altura desejada */
+            height: 300px; /* Defina a altura desejada */
             object-fit: cover;
         }
     </style>
